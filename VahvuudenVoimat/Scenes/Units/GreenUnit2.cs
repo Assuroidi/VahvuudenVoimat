@@ -14,7 +14,7 @@ public class GreenUnit2 : Node2D
 
 	public override void _Ready()
 	{
-		GetNode("Button").Connect("pressed", this, nameof(_OnButtonPressed));
+		GetNode<Button>("Button").Connect("pressed", this, nameof(_OnButtonPressed));
 		previousText = GetNode<Label>("Label").Text;
 	}
 
@@ -25,14 +25,14 @@ public class GreenUnit2 : Node2D
 		{
 
 			GetNode<Label>("Label").Text = "selected!";
-		}
+            GetNode<Sprite>("GreenSprite").Visible = false;
+            GetNode<Sprite>("YellowSprite").Visible = true;
+        }
 		else
 		{
-
             GetNode<Label>("Label").Text = previousText;
-
-            GetNode<Label>("GreenSprite").Visible = !selected;
-            GetNode<Label>("YellowSprite").Visible = selected;
+            GetNode<Sprite>("GreenSprite").Visible = true;
+            GetNode<Sprite>("YellowSprite").Visible = false;
 		}
 
 		
